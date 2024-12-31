@@ -1,3 +1,3 @@
-# Postgres FastAPI Jupyter
+# Pharmaceutical database
 
-This repository provides a FastAPI template connected with PostgreSQL database using Jupyterlab.
+Pharmaceutical database based on PostgreSQL and FastAPI

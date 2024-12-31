@@ -11,3 +11,5 @@ memory_profiler
 psycopg
 sqlalchemy
 pydantic
+chembl_webresource_client
+pubchempy

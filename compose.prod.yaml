@@ -11,9 +11,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - postgres-fastapi-jupyter-network
+      - pharmaceutical-database-network
   fastapi:
-    image: kojamad28/postgres-jupyter-fastapi-prod
+    image: kojamad28/pharmaceutical-database-fastapi-prod
     container_name: fastapi
     build: 
       context: ./app
@@ -30,7 +30,7 @@ services:
     depends_on:
       - postgres
     networks:
-      - postgres-fastapi-jupyter-network
+      - pharmaceutical-database-network
   nginx:
     image: kojamad28/fastapi-nginx
     container_name: nginx
@@ -43,14 +43,14 @@ services:
     depends_on:
       - fastapi
     networks:
-      - postgres-fastapi-jupyter-network
+      - pharmaceutical-database-network
   jupyter:
     build:
       context: ./jupyter
       args:
         REQ_DIR: "requirements/"
         REQ_TXT: "prod.txt"
-    image: kojamad28/postgres-fastapi-jupyter-prod
+    image: kojamad28/pharmaceutical-database-jupyter-prod
     container_name: jupyterlab
     command: jupyter lab --ip=0.0.0.0 --allow-root --LabApp.token=''
     ports:
@@ -62,10 +62,10 @@ services:
     depends_on:
       - nginx
     networks:
-      - postgres-fastapi-jupyter-network
+      - pharmaceutical-database-network
 
 networks:
-  postgres-fastapi-jupyter-network:
+  pharmaceutical-database-network:
     driver: bridge
 
 volumes:
