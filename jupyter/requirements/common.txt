@@ -4,6 +4,7 @@ requests
 numpy
 pandas[performance]
 polars
+ibis-framework[pandas, polars]
 scipy
 statsmodels
 matplotlib
