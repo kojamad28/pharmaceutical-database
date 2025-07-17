@@ -25,5 +25,11 @@ def create_db_and_tables():
 
 
 def get_session():
-    with Session(engine) as session:
+    session = Session(engine)
+    try:
         yield session
+    except:
+        session.rollback()
+        raise
+    finally:
+        session.close()
