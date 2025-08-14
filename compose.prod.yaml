@@ -56,7 +56,7 @@ services:
     ports:
      - "8888:8888"
     volumes:
-     - ./jupyter:/usr/src/app
+     - ./jupyter:/usr/src
     tty: true
     stdin_open: true
     depends_on:
