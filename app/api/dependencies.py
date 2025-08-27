@@ -1,9 +1,13 @@
+from pathlib import Path
+
 from dotenv import dotenv_values
 from sqlalchemy import URL
 from sqlmodel import SQLModel, Session, create_engine
 
-config = dotenv_values("postgres/.env.dev")
-#config = dotenv_values("postgres/.env")
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+config = dotenv_values(BASE_DIR / "db" / ".env.dev")
+#config = dotenv_values(BASE_DIR / "db" / ".env")
 
 DEBUG = config.get("DEBUG", "false").lower() == "true"
 
